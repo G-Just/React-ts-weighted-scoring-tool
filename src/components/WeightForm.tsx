@@ -12,7 +12,7 @@ export default function WeightForm() {
   return (
     <div>
       <form>
-        <label htmlFor="subject">Enter the subject</label>
+        <label htmlFor="subject">Enter the weight</label>
         <input type="text" name="subject" id="subject" />
         <button type="submit" onClick={handleSubmit}>
           Next
