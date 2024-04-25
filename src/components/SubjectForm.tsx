@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { StageContext } from "../context/StageContext";
+import { useStageContext } from "../context/StageContext";
 
 export default function SubjectForm() {
-  const stageController = useContext(StageContext);
+  const stageController = useStageContext();
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    stageController?.setStage(1);
+    stageController.setStage(1);
   }
 
   return (

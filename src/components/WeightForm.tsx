@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { StageContext, useStageContext } from "../context/StageContext";
+import { useStageContext } from "../context/StageContext";
 import InputRow from "./InputRow";
 
 export default function WeightForm() {
