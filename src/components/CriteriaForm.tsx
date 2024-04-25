@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { StageContext } from "../context/StageContext";
-import CriteriaRow from "./CriteriaRow";
+import { useState } from "react";
+import { useStageContext } from "../context/StageContext";
+import InputRow from "./InputRow";
 
 export default function CriteriaForm() {
-  const stageController = useContext(StageContext);
+  const stageController = useStageContext();
   const [rowCount, setRowCount] = useState(1);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -14,13 +14,14 @@ export default function CriteriaForm() {
   function addRow(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
     setRowCount(rowCount + 1);
+    stageController?.setCriteriaCount(() => stageController.criteriaCount + 1);
     renderRows();
   }
 
   function renderRows() {
     const rows: JSX.Element[] = [];
     for (let i = 0; i < rowCount; i++) {
-      rows.push(<CriteriaRow />);
+      rows.push(<InputRow label="Enter rating criteria" />);
     }
     return rows;
   }

@@ -1,19 +1,27 @@
 import { useContext } from "react";
-import { StageContext } from "../context/StageContext";
+import { StageContext, useStageContext } from "../context/StageContext";
+import InputRow from "./InputRow";
 
 export default function WeightForm() {
-  const stageController = useContext(StageContext);
+  const stageController = useStageContext();
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
     stageController?.setStage(3);
   }
 
+  function renderRows() {
+    const rows: JSX.Element[] = [];
+    for (let i = 0; i < stageController.criteriaCount; i++) {
+      rows.push(<InputRow label="Enter desired weight" />);
+    }
+    return rows;
+  }
+
   return (
     <div>
       <form>
-        <label htmlFor="subject">Enter the weight</label>
-        <input type="text" name="subject" id="subject" />
+        {renderRows().map((row) => row)}
         <button type="submit" onClick={handleSubmit}>
           Next
         </button>
