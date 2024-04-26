@@ -10,13 +10,12 @@ export default function SubjectForm() {
 
   return (
     <div>
-      <form>
-        <label htmlFor="subject">Enter the subject</label>
-        <input type="text" name="subject" id="subject" />
+      <input required className="" />
+      {stageController.stage === 0 ? (
         <button type="submit" onClick={handleSubmit}>
           Next
         </button>
-      </form>
+      ) : null}
     </div>
   );
 }

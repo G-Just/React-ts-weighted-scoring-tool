@@ -31,9 +31,11 @@ export default function CriteriaForm() {
       <form>
         {renderRows().map((row) => row)}
         <button onClick={(e) => addRow(e)}>Add criteria</button>
-        <button type="submit" onClick={handleSubmit}>
-          Next
-        </button>
+        {stageController.stage === 1 ? (
+          <button type="submit" onClick={handleSubmit}>
+            Next
+          </button>
+        ) : null}
       </form>
     </div>
   );

@@ -24,9 +24,11 @@ function App() {
 
   return (
     <StageContext.Provider value={stageController}>
-      <SubjectForm />
-      {stage >= 1 ? <CriteriaForm /> : null}
-      {stage >= 2 ? <WeightForm /> : null}
+      <div className="bg-[#eadbbf] w-screen h-screen">
+        <SubjectForm />
+        {stage >= 1 ? <CriteriaForm /> : null}
+        {stage >= 2 ? <WeightForm /> : null}
+      </div>
     </StageContext.Provider>
   );
 }

@@ -21,9 +21,11 @@ export default function WeightForm() {
     <div>
       <form>
         {renderRows().map((row) => row)}
-        <button type="submit" onClick={handleSubmit}>
-          Next
-        </button>
+        {stageController.stage === 2 ? (
+          <button type="submit" onClick={handleSubmit}>
+            Calculate
+          </button>
+        ) : null}
       </form>
     </div>
   );
