@@ -28,15 +28,13 @@ export default function CriteriaForm() {
 
   return (
     <div>
-      <form>
-        {renderRows().map((row) => row)}
-        <button onClick={(e) => addRow(e)}>Add criteria</button>
-        {stageController.stage === 1 ? (
-          <button type="submit" onClick={handleSubmit}>
-            Next
-          </button>
-        ) : null}
-      </form>
+      {renderRows().map((row) => row)}
+      <button onClick={(e) => addRow(e)}>Add criteria</button>
+      {stageController.stage === 1 ? (
+        <button type="submit" onClick={handleSubmit}>
+          Next
+        </button>
+      ) : null}
     </div>
   );
 }

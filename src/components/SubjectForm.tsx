@@ -1,4 +1,5 @@
 import { useStageContext } from "../context/StageContext";
+import InputRow from "./InputRow";
 
 export default function SubjectForm() {
   const stageController = useStageContext();
@@ -10,7 +11,7 @@ export default function SubjectForm() {
 
   return (
     <div>
-      <input required className="" />
+      <InputRow label="Enter the subject" />
       {stageController.stage === 0 ? (
         <button type="submit" onClick={handleSubmit}>
           Next
