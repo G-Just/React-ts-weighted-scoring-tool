@@ -27,14 +27,10 @@ export default function CriteriaForm() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center my-4">
       {renderRows().map((row) => row)}
       <button onClick={(e) => addRow(e)}>Add criteria</button>
-      {stageController.stage === 1 ? (
-        <button type="submit" onClick={handleSubmit}>
-          Next
-        </button>
-      ) : null}
+      {stageController.stage === 1 ? <button onClick={handleSubmit}>Next</button> : null}
     </div>
   );
 }

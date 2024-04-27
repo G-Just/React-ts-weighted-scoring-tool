@@ -10,7 +10,7 @@ export default function SubjectForm() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <InputRow label="Enter the subject" />
       {stageController.stage === 0 ? (
         <button type="submit" onClick={handleSubmit}>

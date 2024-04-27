@@ -18,15 +18,13 @@ export default function WeightForm() {
   }
 
   return (
-    <div>
-      <form>
-        {renderRows().map((row) => row)}
-        {stageController.stage === 2 ? (
-          <button type="submit" onClick={handleSubmit}>
-            Calculate
-          </button>
-        ) : null}
-      </form>
+    <div className="flex flex-col items-center justify-center my-4">
+      {renderRows().map((row) => row)}
+      {stageController.stage === 2 ? (
+        <button type="submit" onClick={handleSubmit}>
+          Calculate
+        </button>
+      ) : null}
     </div>
   );
 }
