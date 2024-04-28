@@ -7,19 +7,29 @@ import WeightForm from "./components/WeightForm";
 export interface StageController {
   stage: number;
   criteriaCount: number;
+  criteriaLabels: string[];
+  weights: number[];
   setStage: React.Dispatch<React.SetStateAction<number>>;
   setCriteriaCount: React.Dispatch<React.SetStateAction<number>>;
+  setCriteriaLabels: React.Dispatch<React.SetStateAction<string[]>>;
+  setWeights: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 function App() {
   const [stage, setStage] = useState<number>(0);
   const [criteriaCount, setCriteriaCount] = useState<number>(1);
+  const [criteriaLabels, setCriteriaLabels] = useState<string[]>([]);
+  const [weights, setWeights] = useState<number[]>([]);
 
   const stageController: StageController = {
-    stage: stage,
+    stage,
     criteriaCount,
+    criteriaLabels,
+    weights,
     setStage,
     setCriteriaCount,
+    setCriteriaLabels,
+    setWeights,
   };
 
   return (
