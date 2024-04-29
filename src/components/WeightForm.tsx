@@ -5,7 +5,7 @@ export default function WeightForm() {
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    data.setStage(3);
+    data.setStage(4);
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {

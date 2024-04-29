@@ -7,7 +7,7 @@ export default function CriteriaForm() {
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    data.setStage(2);
+    data.setStage(3);
   }
 
   function addRow(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

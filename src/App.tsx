@@ -10,6 +10,7 @@ import ResultTable from "./components/ResultTable";
 
 //Typescript
 import { DataContextInterface } from "./ts/interfaces/DataContextInterface";
+import OptionsForm from "./components/OptionsForm";
 
 function App() {
   const [stage, setStage] = useState<number>(0);
@@ -37,7 +38,8 @@ function App() {
         <SubjectForm />
         {stage >= 1 ? <CriteriaForm /> : null}
         {stage >= 2 ? <WeightForm /> : null}
-        {stage === 3 ? <ResultTable /> : null}
+        {stage >= 3 ? <OptionsForm /> : null}
+        {stage === 4 ? <ResultTable /> : null}
       </div>
     </DataContext.Provider>
   );
