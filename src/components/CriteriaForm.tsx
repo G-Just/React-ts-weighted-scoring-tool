@@ -4,11 +4,9 @@ import { useDataContext } from "../context/DataContext";
 export default function CriteriaForm() {
   const data = useDataContext();
   const [rowCount, setRowCount] = useState(1);
-  const localLabels: string[] = [];
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    localLabels.forEach((row) => data.setCriteriaLabels([...data.criteriaLabels, row]));
     data.setStage(2);
   }
 
@@ -19,7 +17,12 @@ export default function CriteriaForm() {
     renderRows();
   }
 
-  // TODO: make the onsubmit thing, because onchange is not working here
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
+    const localLabels = [...data.criteriaLabels];
+    localLabels[iterator] = event.target.value;
+    data.setCriteriaLabels(localLabels);
+  }
+
   function renderRows() {
     const rows: JSX.Element[] = [];
     for (let i = 0; i < rowCount; i++) {
@@ -27,7 +30,7 @@ export default function CriteriaForm() {
         <div key={i} className="flex flex-col items-center justify-center">
           <label>Enter rating criteria name</label>
           <input
-            onChange={(e) => (localLabels[i] = e.target.value)}
+            onChange={(e) => handleChange(e, i)}
             className="p-2 border border-black rounded"
             type="text"
             required

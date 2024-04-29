@@ -1,29 +1,39 @@
+import { useState } from "react";
 import { useDataContext } from "../context/DataContext";
 
-export default function WeightForm() {
+export default function OptionsForm() {
   const data = useDataContext();
+  const [rowCount, setRowCount] = useState(1);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    data.setStage(3);
+    data.setStage(2);
+  }
+
+  function addRow(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault();
+    setRowCount(rowCount + 1);
+    data.setCriteriaCount(() => data.criteriaCount + 1);
+    renderRows();
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
-    const localWeights = [...data.weights];
-    localWeights[iterator] = +event.target.value;
-    data.setWeights(localWeights);
+    const localLabels = [...data.criteriaLabels];
+    localLabels[iterator] = event.target.value;
+    data.setCriteriaLabels(localLabels);
   }
 
   function renderRows() {
     const rows: JSX.Element[] = [];
-    for (let i = 0; i < data.criteriaCount; i++) {
+    for (let i = 0; i < rowCount; i++) {
       rows.push(
         <div key={i} className="flex flex-col items-center justify-center">
-          <label>Enter a desired weight</label>
+          <label>Enter rating criteria name</label>
           <input
             onChange={(e) => handleChange(e, i)}
             className="p-2 border border-black rounded"
-            type="number"
+            type="text"
+            required
           />
         </div>
       );
@@ -34,11 +44,8 @@ export default function WeightForm() {
   return (
     <div className="flex flex-col items-center justify-center my-4">
       {renderRows().map((row) => row)}
-      {data.stage === 2 ? (
-        <button type="submit" onClick={handleSubmit}>
-          Calculate
-        </button>
-      ) : null}
+      <button onClick={(e) => addRow(e)}>Add criteria</button>
+      {data.stage === 1 ? <button onClick={handleSubmit}>Next</button> : null}
     </div>
   );
 }

@@ -15,6 +15,7 @@ export default function ResultTable() {
             <td>{criteria}</td>
           ))}
         </thead>
+        <tbody>{/* TODO: add the body of the table here */}</tbody>
       </table>
     </div>
   );
