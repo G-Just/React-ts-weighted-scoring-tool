@@ -1,18 +1,25 @@
-import { useStageContext } from "../context/StageContext";
-import InputRow from "./InputRow";
+import { useDataContext } from "../context/DataContext";
 
 export default function SubjectForm() {
-  const stageController = useStageContext();
+  const data = useDataContext();
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    stageController.setStage(1);
+    data.setStage(1);
   }
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <InputRow label="Enter the subject" />
-      {stageController.stage === 0 ? (
+      <div className="flex flex-col items-center justify-center">
+        <label>Enter the subject</label>
+        <input
+          onChange={(e) => data.setSubject(e.target.value)}
+          className="p-2 border border-black rounded"
+          type="text"
+          required
+        />
+      </div>
+      {data.stage === 0 ? (
         <button type="submit" onClick={handleSubmit}>
           Next
         </button>
