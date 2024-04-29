@@ -4,7 +4,7 @@ export default function InputRow({ label }: PropsWithLabel) {
   return (
     <div className="flex flex-col items-center justify-center">
       <label>{label}</label>
-      <input className="border border-black" type="text" name="subject[]" />
+      <input className="p-2 border border-black rounded" type="text" />
     </div>
   );
 }

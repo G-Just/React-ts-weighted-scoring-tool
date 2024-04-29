@@ -21,7 +21,7 @@ export default function CriteriaForm() {
   function renderRows() {
     const rows: JSX.Element[] = [];
     for (let i = 0; i < rowCount; i++) {
-      rows.push(<InputRow label="Enter rating criteria" />);
+      rows.push(<InputRow label="Enter rating criteria name" />);
     }
     return rows;
   }
