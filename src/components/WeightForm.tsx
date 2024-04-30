@@ -34,7 +34,7 @@ export default function WeightForm() {
   return (
     <div className="flex flex-col items-center justify-center my-4">
       {renderRows().map((row) => row)}
-      {data.stage === 2 ? (
+      {data.stage === 3 ? (
         <button type="submit" onClick={handleSubmit}>
           Calculate
         </button>

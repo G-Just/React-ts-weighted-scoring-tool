@@ -28,7 +28,7 @@ export default function CriteriaForm() {
     for (let i = 0; i < rowCount; i++) {
       rows.push(
         <div key={i} className="flex flex-col items-center justify-center">
-          <label>Enter rating criteria name</label>
+          <label>Enter rating criteria</label>
           <input
             onChange={(e) => handleChange(e, i)}
             className="p-2 border border-black rounded"
@@ -45,7 +45,7 @@ export default function CriteriaForm() {
     <div className="flex flex-col items-center justify-center my-4">
       {renderRows().map((row) => row)}
       <button onClick={(e) => addRow(e)}>Add criteria</button>
-      {data.stage === 1 ? <button onClick={handleSubmit}>Next</button> : null}
+      {data.stage === 2 ? <button onClick={handleSubmit}>Next</button> : null}
     </div>
   );
 }

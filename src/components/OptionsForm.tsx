@@ -13,14 +13,13 @@ export default function OptionsForm() {
   function addRow(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
     setRowCount(rowCount + 1);
-    data.setCriteriaCount(() => data.criteriaCount + 1);
     renderRows();
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
-    const localLabels = [...data.criteriaLabels];
-    localLabels[iterator] = event.target.value;
-    data.setCriteriaLabels(localLabels);
+    const localOptions = [...data.options];
+    localOptions[iterator] = event.target.value;
+    data.setOptions(localOptions);
   }
 
   function renderRows() {
@@ -28,7 +27,7 @@ export default function OptionsForm() {
     for (let i = 0; i < rowCount; i++) {
       rows.push(
         <div key={i} className="flex flex-col items-center justify-center">
-          <label>Enter rating criteria name</label>
+          <label>Enter options</label>
           <input
             onChange={(e) => handleChange(e, i)}
             className="p-2 border border-black rounded"
@@ -44,7 +43,7 @@ export default function OptionsForm() {
   return (
     <div className="flex flex-col items-center justify-center my-4">
       {renderRows().map((row) => row)}
-      <button onClick={(e) => addRow(e)}>Add criteria</button>
+      <button onClick={(e) => addRow(e)}>Add another option</button>
       {data.stage === 1 ? <button onClick={handleSubmit}>Next</button> : null}
     </div>
   );
