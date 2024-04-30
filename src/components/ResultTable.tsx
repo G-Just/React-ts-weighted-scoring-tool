@@ -8,13 +8,13 @@ export default function ResultTable() {
     <div>
       <h1>{data.subject}</h1>
       <table>
-        <thead>
-          <td>Criteria</td>
-          <td>Weights</td>
+        <tr>
+          <th>Criteria</th>
+          <th>Weights</th>
           {data.options.map((criteria, idx) => (
-            <td key={idx}>{criteria}</td>
+            <th key={idx}>{criteria}</th>
           ))}
-        </thead>
+        </tr>
         <tbody>{/* TODO: add the body of the table here */}</tbody>
       </table>
     </div>
