@@ -3,7 +3,7 @@ import { useDataContext } from "../context/DataContext";
 
 export default function OptionsForm() {
   const data = useDataContext();
-  const [rowCount, setRowCount] = useState(1);
+  const [localRowCount, setLocalRowCount] = useState(1);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
@@ -12,19 +12,26 @@ export default function OptionsForm() {
 
   function addRow(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    setRowCount(rowCount + 1);
+
+    const localOptions = data.options;
+    localOptions.push({
+      option: "init",
+      values: [],
+    });
+    data.setOptions(localOptions);
+    setLocalRowCount(localRowCount + 1);
     renderRows();
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
-    const localOptions = [...data.options];
-    localOptions[iterator] = event.target.value;
+    const localOptions = data.options;
+    localOptions[iterator].option = event.target.value;
     data.setOptions(localOptions);
   }
 
   function renderRows() {
     const rows: JSX.Element[] = [];
-    for (let i = 0; i < rowCount; i++) {
+    for (let i = 0; i < localRowCount; i++) {
       rows.push(
         <div key={i} className="flex flex-col items-center justify-center">
           <label>Enter options</label>

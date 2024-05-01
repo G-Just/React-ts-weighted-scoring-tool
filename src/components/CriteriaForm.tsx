@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDataContext } from "../context/DataContext";
 
 export default function CriteriaForm() {
   const data = useDataContext();
-  const [rowCount, setRowCount] = useState(1);
+
+  const [rowCount, setLocalRowCount] = useState(1);
+
+  useEffect(() => {
+    const localCriteria = data.options;
+    localCriteria.forEach((option) => option.values.push({ criteria: "init", value: 0 }));
+    data.setOptions(localCriteria);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rowCount]);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
@@ -12,15 +20,16 @@ export default function CriteriaForm() {
 
   function addRow(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    setRowCount(rowCount + 1);
-    data.setCriteriaCount(() => data.criteriaCount + 1);
+    setLocalRowCount(rowCount + 1);
     renderRows();
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
-    const localLabels = [...data.criteriaLabels];
-    localLabels[iterator] = event.target.value;
-    data.setCriteriaLabels(localLabels);
+    const localCriteria = data.options;
+    localCriteria.forEach(
+      (option) => (option.values[iterator].criteria = event.target.value)
+    );
+    data.setOptions(localCriteria);
   }
 
   function renderRows() {

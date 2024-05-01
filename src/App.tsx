@@ -8,31 +8,31 @@ import OptionsForm from "./components/OptionsForm";
 import CriteriaForm from "./components/CriteriaForm";
 import WeightForm from "./components/WeightForm";
 import ResultTable from "./components/ResultTable";
+import RatingsForm from "./components/RatingsForm";
 
 //Typescript
-import { DataContextInterface } from "./ts/interfaces/DataContextInterface";
+import { DataContextInterface, Options } from "./ts/interfaces/DataContextInterface";
 
 function App() {
   const [stage, setStage] = useState<number>(0);
   const [subject, setSubject] = useState<string>("");
-  const [options, setOptions] = useState<string[]>([]);
-  const [criteriaCount, setCriteriaCount] = useState<number>(1);
-  const [criteriaLabels, setCriteriaLabels] = useState<string[]>([]);
   const [weights, setWeights] = useState<number[]>([]);
+  const [options, setOptions] = useState<Options[]>([
+    {
+      option: "init",
+      values: [],
+    },
+  ]);
 
   const data: DataContextInterface = {
     stage,
     subject,
-    options,
-    criteriaCount,
-    criteriaLabels,
     weights,
+    options,
     setStage,
     setSubject,
-    setOptions,
-    setCriteriaCount,
-    setCriteriaLabels,
     setWeights,
+    setOptions,
   };
 
   return (
@@ -42,7 +42,8 @@ function App() {
         {stage >= 1 ? <OptionsForm /> : null}
         {stage >= 2 ? <CriteriaForm /> : null}
         {stage >= 3 ? <WeightForm /> : null}
-        {stage === 4 ? <ResultTable /> : null}
+        {stage >= 4 ? <RatingsForm /> : null}
+        {stage === 5 ? <ResultTable /> : null}
       </div>
     </DataContext.Provider>
   );

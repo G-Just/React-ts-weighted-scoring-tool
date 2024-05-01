@@ -11,11 +11,16 @@ export default function ResultTable() {
         <tr>
           <th>Criteria</th>
           <th>Weights</th>
-          {data.options.map((criteria, idx) => (
-            <th key={idx}>{criteria}</th>
-          ))}
+          <th>{data.options.map((option) => option)}</th>
         </tr>
-        <tbody>{/* TODO: add the body of the table here */}</tbody>
+        <tbody>
+          {data.criteriaLabels.map((criteria, idx) => (
+            <tr key={idx}>
+              <td>{criteria}</td>
+              <td>{data.weights[idx]}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
