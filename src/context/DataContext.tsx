@@ -5,7 +5,6 @@ export const DataContext = createContext<DataContextInterface | undefined>(undef
 
 export function useDataContext() {
   const data = useContext(DataContext);
-  console.log(data);
 
   if (data === undefined) {
     throw new Error("useStageContext must be used with StageContext");

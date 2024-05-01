@@ -2,6 +2,7 @@ import { useDataContext } from "../context/DataContext";
 
 export default function WeightForm() {
   const data = useDataContext();
+  console.log(data);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
@@ -18,10 +19,10 @@ export default function WeightForm() {
 
   function renderRows() {
     const rows: JSX.Element[] = [];
-    for (let i = 0; i < data.options.length; i++) {
+    for (let i = 0; i < data.options[0].values.length; i++) {
       rows.push(
         <div key={i} className="flex flex-col items-center justify-center">
-          <label>Enter a desired weight</label>
+          <label>Enter a desired weight for {data.options[0].values[i].criteria}</label>
           <input
             onChange={(e) => handleChange(e, i)}
             className="p-2 border border-black rounded"
