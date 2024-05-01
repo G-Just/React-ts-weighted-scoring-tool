@@ -4,10 +4,11 @@ import { DataContextInterface } from "../ts/interfaces/DataContextInterface";
 export const DataContext = createContext<DataContextInterface | undefined>(undefined);
 
 export function useDataContext() {
-  const stage = useContext(DataContext);
+  const data = useContext(DataContext);
+  console.log(data);
 
-  if (stage === undefined) {
+  if (data === undefined) {
     throw new Error("useStageContext must be used with StageContext");
   }
-  return stage;
+  return data;
 }

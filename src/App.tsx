@@ -16,7 +16,6 @@ import { DataContextInterface, Options } from "./ts/interfaces/DataContextInterf
 function App() {
   const [stage, setStage] = useState<number>(0);
   const [subject, setSubject] = useState<string>("");
-  const [weights, setWeights] = useState<number[]>([]);
   const [options, setOptions] = useState<Options[]>([
     {
       option: "init",
@@ -27,11 +26,9 @@ function App() {
   const data: DataContextInterface = {
     stage,
     subject,
-    weights,
     options,
     setStage,
     setSubject,
-    setWeights,
     setOptions,
   };
 

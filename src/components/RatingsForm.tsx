@@ -8,10 +8,14 @@ export default function RatingsForm() {
     data.setStage(5);
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
+  function handleChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+    option: number,
+    criteria: number
+  ) {
     const localRatings = data.options;
-    localRatings[iterator].value = +event.target.value;
-    data.setRatings(localRatings);
+    localRatings[criteria].values[option].value = +event.target.value;
+    data.setOptions(localRatings);
   }
 
   function renderRows(j: number) {
@@ -21,7 +25,7 @@ export default function RatingsForm() {
         <div key={i} className="flex flex-col items-center justify-center">
           <label>Enter a value for {data.options[j].values[i].criteria}</label>
           <input
-            onChange={(e) => handleChange(e, i)}
+            onChange={(e) => handleChange(e, i, j)}
             className="p-2 my-2 border border-black rounded"
             type="number"
           />
@@ -35,7 +39,7 @@ export default function RatingsForm() {
     const cols: JSX.Element[] = [];
     for (let i = 0; i < data.options.length; i++) {
       cols.push(
-        <div>
+        <div key={i}>
           <h1 className="text-lg text-center">{data.options[i].option}</h1>
           <div className="flex flex-col items-center justify-center">
             {renderRows(i).map((row) => row)}

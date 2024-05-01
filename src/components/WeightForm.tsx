@@ -9,9 +9,11 @@ export default function WeightForm() {
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
-    const localWeights = data.weights;
-    localWeights[iterator] = +event.target.value;
-    data.setWeights(localWeights);
+    const localWeights = data.options;
+    localWeights.forEach(
+      (option) => (option.values[iterator].weight = +event.target.value)
+    );
+    data.setOptions(localWeights);
   }
 
   function renderRows() {

@@ -7,6 +7,11 @@ export default function OptionsForm() {
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
+    const localCriteria = data.options;
+    localCriteria.forEach((option) =>
+      option.values.push({ criteria: "init", value: 0, weight: 0 })
+    );
+    data.setOptions(localCriteria);
     data.setStage(2);
   }
 
@@ -18,6 +23,7 @@ export default function OptionsForm() {
       option: "init",
       values: [],
     });
+
     data.setOptions(localOptions);
     setLocalRowCount(localRowCount + 1);
     renderRows();

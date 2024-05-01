@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDataContext } from "../context/DataContext";
 
 export default function CriteriaForm() {
   const data = useDataContext();
-
-  const [rowCount, setLocalRowCount] = useState(1);
-
-  useEffect(() => {
-    const localCriteria = data.options;
-    localCriteria.forEach((option) => option.values.push({ criteria: "init", value: 0 }));
-    data.setOptions(localCriteria);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rowCount]);
+  const [localRowCount, setLocalRowCount] = useState(1);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
@@ -20,7 +12,12 @@ export default function CriteriaForm() {
 
   function addRow(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    setLocalRowCount(rowCount + 1);
+    const localCriteria = data.options;
+    localCriteria.forEach((option) =>
+      option.values.push({ criteria: "init", value: 0, weight: 0 })
+    );
+    data.setOptions(localCriteria);
+    setLocalRowCount(localRowCount + 1);
     renderRows();
   }
 
@@ -34,7 +31,7 @@ export default function CriteriaForm() {
 
   function renderRows() {
     const rows: JSX.Element[] = [];
-    for (let i = 0; i < rowCount; i++) {
+    for (let i = 0; i < localRowCount; i++) {
       rows.push(
         <div key={i} className="flex flex-col items-center justify-center">
           <label>Enter rating criteria</label>
