@@ -4,6 +4,15 @@ export default function RatingsForm() {
   const data = useDataContext();
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    const localRatings = data.options;
+    localRatings.forEach(
+      (option) =>
+        (option.total += option.values.reduce(
+          (acc, cur) => (acc = cur.value * cur.weight),
+          0
+        ))
+    );
+    data.setOptions(localRatings);
     event.preventDefault();
     data.setStage(5);
   }

@@ -14,7 +14,6 @@ import RatingsForm from "./components/RatingsForm";
 import { DataContextInterface, Options } from "./ts/interfaces/DataContextInterface";
 
 function App() {
-  // TODO: add onclick enter to change stages
   const [stage, setStage] = useState<number>(0);
   const [subject, setSubject] = useState<string>("");
   const [options, setOptions] = useState<Options[]>([

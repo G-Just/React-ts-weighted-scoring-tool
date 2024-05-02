@@ -14,6 +14,7 @@ export default function ResultTable() {
             {data.options.map((option) => {
               return <th>{option.option}</th>;
             })}
+            <th>Total</th>
           </tr>
         </thead>
         <tbody className="text-center">
@@ -25,14 +26,10 @@ export default function ResultTable() {
                 {option.values.map((value) => {
                   return <td>{value.value}</td>;
                 })}
+                <td>{option.total}</td>
               </tr>
             );
           })}
-          <tr>
-            <td>Total:</td>
-            <td>-</td>
-            {/* TODO: add a total calculation and display here in earch td */}
-          </tr>
         </tbody>
       </table>
     </div>

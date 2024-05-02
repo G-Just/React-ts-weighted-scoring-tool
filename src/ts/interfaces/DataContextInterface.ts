@@ -1,5 +1,6 @@
 export type Options = {
   option: string;
+  total: number;
   values: Values[];
 };
 

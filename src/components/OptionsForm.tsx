@@ -21,6 +21,7 @@ export default function OptionsForm() {
     const localOptions = data.options;
     localOptions.push({
       option: "init",
+      total: 0,
       values: [],
     });
 
