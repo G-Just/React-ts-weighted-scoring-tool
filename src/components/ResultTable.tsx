@@ -26,10 +26,13 @@ export default function ResultTable() {
                 {option.values.map((value) => {
                   return <td>{value.value}</td>;
                 })}
-                <td>{option.total}</td>
               </tr>
             );
           })}
+          <tr>
+            <td>Total</td>
+            <td>-</td>
+          </tr>
         </tbody>
       </table>
     </div>
