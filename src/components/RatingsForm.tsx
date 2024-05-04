@@ -57,7 +57,7 @@ export default function RatingsForm() {
   }
 
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-2 slideIn">
       <div className="flex justify-center gap-4">{renderCols()}</div>
       {data.stage === 4 ? (
         <button type="submit" onClick={handleSubmit}>

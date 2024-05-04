@@ -55,7 +55,7 @@ export default function OptionsForm() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center my-4">
+    <div className="flex flex-col items-center justify-center my-4 slideIn">
       {renderRows().map((row) => row)}
       <button onClick={(e) => addRow(e)}>Add another option</button>
       {data.stage === 1 ? <button onClick={handleSubmit}>Next</button> : null}

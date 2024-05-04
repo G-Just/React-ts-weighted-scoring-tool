@@ -48,7 +48,7 @@ export default function CriteriaForm() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center my-4">
+    <div className="flex flex-col items-center justify-center my-4 slideIn">
       {renderRows().map((row) => row)}
       <button onClick={(e) => addRow(e)}>Add criteria</button>
       {data.stage === 2 ? <button onClick={handleSubmit}>Next</button> : null}

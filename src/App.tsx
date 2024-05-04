@@ -35,12 +35,12 @@ function App() {
 
   return (
     <DataContext.Provider value={data}>
-      <div className="w-screen h-screen">
-        <SubjectForm />
-        {stage >= 1 ? <OptionsForm /> : null}
-        {stage >= 2 ? <CriteriaForm /> : null}
-        {stage >= 3 ? <WeightForm /> : null}
-        {stage >= 4 ? <RatingsForm /> : null}
+      <div className="w-screen h-screen overflow-hidden">
+        {stage === 0 ? <SubjectForm /> : null}
+        {stage === 1 ? <OptionsForm /> : null}
+        {stage === 2 ? <CriteriaForm /> : null}
+        {stage === 3 ? <WeightForm /> : null}
+        {stage === 4 ? <RatingsForm /> : null}
         {stage === 5 ? <ResultTable /> : null}
       </div>
     </DataContext.Provider>
