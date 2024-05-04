@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes slide {
+  100% {
+    right: 50%;
+  }
+}
+
+.slideIn {
+  position: absolute;
+  right: -100%;
+  top: 35%;
+  transform: translate(50%, -50%);
+  animation: slide 3s forwards;
+}

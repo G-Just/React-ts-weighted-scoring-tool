@@ -10,7 +10,7 @@ export default function SubjectForm() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center gap-2">
         <label>Enter the subject</label>
         <input
           onChange={(e) => data.setSubject(e.target.value)}
