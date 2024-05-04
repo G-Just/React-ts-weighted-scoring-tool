@@ -19,6 +19,7 @@ function App() {
   const [options, setOptions] = useState<Options[]>([
     {
       option: "init",
+      total: 0,
       values: [],
     },
   ]);

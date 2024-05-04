@@ -3,40 +3,56 @@ import { useDataContext } from "../context/DataContext";
 export default function ResultTable() {
   const data = useDataContext();
 
+  let currentRow = -1;
+
+  function resultRowBuilder() {
+    const row: number[][] = [];
+    const criteriaCount = data.options[0].values.length;
+    for (let i = 0; i < criteriaCount; i++) {
+      const local: number[] = [];
+      data.options.forEach((option) => {
+        local.push(option.values[i].value);
+      });
+      row.push(local);
+    }
+    currentRow++;
+    return row;
+  }
+
   return (
     <div>
       <h1>{data.subject}</h1>
-      <table className="w-1/2 border border-black">
-        <thead>
-          <tr>
-            <th>Criteria</th>
-            <th>Weights</th>
-            {data.options.map((option) => {
-              return <th>{option.option}</th>;
-            })}
-          </tr>
-        </thead>
-        <tbody className="text-center">
-          {data.options.map((option, idx) => {
-            return (
-              <tr key={idx}>
-                <td>{option.values[idx].criteria}</td>
-                <td>{option.values[idx].weight}</td>
-                {option.values.map((value) => {
-                  return <td>{value.value}</td>;
+      <div className="flex justify-center pb-20">
+        <table className="w-1/2 border border-black">
+          <thead>
+            <tr>
+              <th>Criteria</th>
+              <th>Weights</th>
+              {data.options.map((option) => {
+                return <th>{option.option}</th>;
+              })}
+            </tr>
+          </thead>
+          <tbody className="text-center">
+            {data.options[0].values.map((value) => (
+              <tr>
+                <td>{value.criteria}</td>
+                <td>{value.weight}</td>
+                {resultRowBuilder()[currentRow].map((value) => {
+                  return <td>{value}</td>;
                 })}
               </tr>
-            );
-          })}
-          <tr>
-            <td>Total</td>
-            <td>-</td>
-            {data.options.map((option, idx) => {
-              return <td key={idx}>{option.total}</td>;
-            })}
-          </tr>
-        </tbody>
-      </table>
+            ))}
+            <tr>
+              <td className="font-bold">Total</td>
+              <td>-</td>
+              {data.options.map((option, idx) => {
+                return <td key={idx}>{option.total}</td>;
+              })}
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
