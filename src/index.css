@@ -3,15 +3,26 @@
 @tailwind utilities;
 
 @keyframes slide {
+  0% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(-20deg);
+  }
+  60% {
+    transform: rotate(20deg);
+    right: 50%;
+  }
   100% {
+    transform: rotate(0deg);
     right: 50%;
   }
 }
 
 .slideIn {
   position: absolute;
-  right: -100%;
+  right: -200%;
   top: 35%;
-  transform: translate(50%, -50%);
-  animation: slide 1s forwards;
+  animation: slide 2s forwards;
+  transform-origin: center -50px;
 }

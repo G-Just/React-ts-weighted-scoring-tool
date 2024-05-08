@@ -9,7 +9,7 @@ export default function SubjectForm() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 border-2 border-black slideIn">
+    <div className="flex flex-col items-center justify-center p-4 slideIn">
       <div className="flex flex-col items-center justify-center gap-2">
         <label>Enter the subject</label>
         <input
