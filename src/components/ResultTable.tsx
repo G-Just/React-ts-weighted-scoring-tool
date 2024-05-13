@@ -20,9 +20,9 @@ export default function ResultTable() {
   }
 
   return (
-    <div>
-      <h1>{data.subject}</h1>
-      <div className="flex justify-center pb-20">
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <h1 className="py-6 text-5xl font-extralight">{data.subject}</h1>
+      <div className="flex justify-center w-full pb-20">
         <table className="w-1/2 border border-black">
           <thead>
             <tr>
@@ -53,6 +53,7 @@ export default function ResultTable() {
           </tbody>
         </table>
       </div>
+      <button onClick={() => data.setStage(0)}>Reset</button>
     </div>
   );
 }

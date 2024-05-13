@@ -4,25 +4,26 @@
 
 @keyframes slide {
   0% {
-    transform: rotate(-20deg);
+    transform: rotate(-15deg);
   }
   40% {
-    transform: rotate(-20deg);
+    transform: rotate(-15deg);
   }
   60% {
-    transform: rotate(19deg);
-    right: 45%;
+    right: 52%;
+    transform: rotate(10deg);
   }
   100% {
+    right: 50%;
     transform: rotate(0deg);
-    right: 45%;
+    transform: translate(50%, 0);
   }
 }
 
 .slideIn {
-  position: absolute;
   right: -200%;
-  top: 35%;
+  top: 25%;
+  position: absolute;
+  transform-origin: center -100px;
   animation: slide 2s forwards;
-  transform-origin: center -50px;
 }
