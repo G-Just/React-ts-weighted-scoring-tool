@@ -21,6 +21,8 @@
 }
 
 .slideIn {
+  border: 2px solid black;
+  padding: 20px;
   right: -200%;
   top: 25%;
   position: absolute;
