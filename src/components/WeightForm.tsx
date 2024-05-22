@@ -2,7 +2,6 @@ import { useDataContext } from "../context/DataContext";
 
 export default function WeightForm() {
   const data = useDataContext();
-  console.log(data);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
