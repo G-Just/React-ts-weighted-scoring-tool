@@ -2,12 +2,10 @@ import { useDataContext } from "../context/DataContext";
 
 export default function WeightForm() {
   const data = useDataContext();
-
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
     data.setStage(4);
   }
-
   function handleChange(event: React.ChangeEvent<HTMLInputElement>, iterator: number) {
     const localWeights = data.options;
     localWeights.forEach(
@@ -15,7 +13,6 @@ export default function WeightForm() {
     );
     data.setOptions(localWeights);
   }
-
   function renderRows() {
     const rows: JSX.Element[] = [];
     for (let i = 0; i < data.options[0].values.length; i++) {
