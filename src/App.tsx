@@ -1,6 +1,6 @@
 // React
-import { useState } from "react";
 import { DataContext } from "./context/DataContext";
+import { KeyboardEvent, useState } from "react";
 
 // Components
 import SubjectForm from "./components/SubjectForm";
@@ -24,6 +24,13 @@ function App() {
     },
   ]);
 
+  const handleKeyPress = (event: KeyboardEvent): void => {
+    console.log(event.key);
+    if (event.key === "Enter" && stage < 5) {
+      setStage(stage + 1);
+    }
+  };
+
   const data: DataContextInterface = {
     stage,
     subject,
@@ -34,14 +41,16 @@ function App() {
   };
 
   return (
-    <DataContext.Provider value={data}>
-      {stage === 0 ? <SubjectForm /> : null}
-      {stage === 1 ? <OptionsForm /> : null}
-      {stage === 2 ? <CriteriaForm /> : null}
-      {stage === 3 ? <WeightForm /> : null}
-      {stage === 4 ? <RatingsForm /> : null}
-      {stage === 5 ? <ResultTable /> : null}
-    </DataContext.Provider>
+    <div onKeyPress={handleKeyPress} className="w-screen h-screen">
+      <DataContext.Provider value={data}>
+        {stage === 0 ? <SubjectForm /> : null}
+        {stage === 1 ? <OptionsForm /> : null}
+        {stage === 2 ? <CriteriaForm /> : null}
+        {stage === 3 ? <WeightForm /> : null}
+        {stage === 4 ? <RatingsForm /> : null}
+        {stage === 5 ? <ResultTable /> : null}
+      </DataContext.Provider>
+    </div>
   );
 }
 
